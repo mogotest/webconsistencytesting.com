@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Web Consistency Testing</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      /* Override some defaults */
+      html, body {
+        background-color: #eee;
+      }
+      body {
+        padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+      }
+      .container > footer p {
+        text-align: center; /* center align it with the container */
+      }
+      .container {
+        width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+      }
+
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+        -webkit-border-radius: 0 0 6px 6px;
+           -moz-border-radius: 0 0 6px 6px;
+                border-radius: 0 0 6px 6px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+      /* Page header tweaks */
+      .page-header {
+        background-color: #f5f5f5;
+        padding: 20px 20px 10px;
+        margin: -20px -20px 20px;
+      }
+
+      /* Styles you shouldn't keep as they are for displaying this base example only */
+      .content .span10,
+      .content .span4 {
+        min-height: 500px;
+      }
+      /* Give a quick and non-cross-browser friendly divider */
+      .content .span4 {
+        margin-left: 0;
+        padding-left: 19px;
+        border-left: 1px solid #eee;
+      }
+
+      .topbar .btn {
+        border: 0;
+      }
+
+    </style>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="page-header">
+          <h1>Web Consistency Testing <small>Making the Web better for all</small></h1>
+        </div>
+        <div class="row">
+          <div class="span10">
+            <h2>Introduction</h2>
+            
+            <p>
+              Web Consistency Testing is a new form of Web testing that aims to answer the simple question: does this page look right?
+              We as an industry waste an insane amount of time trying to answer that.  Until now, or choices have been ship &amp; hope nothing breaks
+              or compare every browser rendering and see if anything gets caught.  It's a massive resource hole, but we simply can't ignore
+              it because our visitors very much care about how a site looks.
+            </p>
+            
+            <p>
+              Web Consistency Testing is an automated approach to making sure a page looks the way we expect, whether that be cross-browser, over time,
+              in multiple locales, or whatever else we can think of.  Kevin Menard, founder of <a href="http://mogotest.com/">Mogotest</a>, presented
+              an in-depth talk about what Web Consistency Testing is and presented a roadmap for building such a system at GTAC 2011.  You can see his
+              presentation below:
+            </p>
+            
+            <iframe width="560" height="315" src="http://www.youtube.com/embed/_6fV-6eMSUM" frameborder="0" allowfullscreen></iframe>
+            
+            <a href="/presentations/web_consistency_testing.pdf">Download</a> a copy of the slides.
+            
+            <hr />
+            
+            <h2>FAQs</h2>
+            
+            <h3>How is this different than functional testing?</h3>
+            <p>
+              Functional testing is a great practice and should be part of your Web testing repertoire.  The problem is functional testing only emulates
+              the mechanics of how a user interacts with a site: clicking buttons, typing text, etc.  There's certainly value in all this.  But well before
+              visitors start interacting with a page at that level, they view the page (alternatively, through a screenreader).  The Web is primarily a visual
+              medium and pages that look wrong get abandoned.
+            </p>
+
+            <p>
+              Web Consistency Testing is complementary to functional testing.  You can check that your form error handling works when a required value is missing,
+              but you can also check that the error messages look the way you expect.  You can verify a button click responds correctly, but also ensure the button
+              appears in the correct location on a page.
+            </p>
+            
+            <h3>Don't browsers mostly look the same now?</h3>
+            <p>
+              Yes &amp; no.  Through my course of work I've come across a lot of subtle differences between Chrome, Safari, and Firefox.  Obviously Internet Explorer
+              is an entirely different beast.  There's certainly been consolidation around the understand of some of the more ambiguous portions of the Web specs,
+              but browsers are adopting various portions of the draft HTML 5 and CSS 3 specs and have accelerated their delivery schedules.  So, at any given time,
+              things could be much better or much worse for your site.
+            </p>
+
+            <p>
+              There has also been rapid adoption of smart phone technology in the US in the past few years.  These new browsers present new challenges.  So, on the
+              whole the differences between browsers is narrowing in one regard, but widening in another.
+            </p>
+
+            <h3>What if I'm only targeting one browser?</h3>
+            <p>
+              Web Consistency Testing isn't going to appeal to everyone.  If you have a great process in place to ensure your pages always look the way you expect,
+              there's no point in messing with that.  But the great thing about Web Consistency Testing is that it's based on comparing page representations.  Those
+              pages could come from two different browsers, but they could also come from the same browser over time.  So, even if you're targeting just one browser,
+              Web Consistency Testing can serve as a regression tool, allowing you to make changes to shared assets without fear of inadvertently breaking pages. Or
+              perhaps you want to test in the same browser but in different locales.  Or maybe you want to test devices with various bandwidth capabilities.  The
+              same approach works and can adapt to whatever comparisons you need.
+            </p>
+            
+            <hr />
+            
+            <h2>Discussion</h2>
+            <p>
+              Want to lend a hand in enhancing Web Consistency Testing?  Looking for help on building out an implementation?  Just interested in the concept?
+              <a href="http://groups.google.com/group/web-consistency-testing">Join the Google Group</a> to get started.
+            </p>
+          </div>
+
+          <div class="span4">
+            <h3>Open Source Tools</h3>
+            <ul>
+              <li><a href="http://code.google.com/p/fighting-layout-bugs/">Fighting Layout Bugs</a></li>
+              <li><a href="http://code.google.com/p/qualitybots/">Quality Bots</a></li>
+            </ul>
+
+            <h3>Presentations</h3>
+            <ul>
+              <li><a href="http://www.youtube.com/watch?v=WY3C6FHqSqQ">Fighting Layout Bugs</a></li>
+              <li><a href="http://www.youtube.com/watch?v=_6fV-6eMSUM">Web Consistency Testing</a></li>
+              <li><a href="http://www.youtube.com/watch?v=fQtBrmUU8Uk">The Latest in Google Test Tools</a></li>
+            </ul>
+
+            <h3>Commercial Tools</h3>
+            <ul>
+              <li><a href="http://browsera.com/">Browsera</a></li>
+              <li><a href="http://mogotest.com/">Mogotest</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Kevin Menard, 2011</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
