@@ -13,7 +13,6 @@
 
     <!-- Le styles -->
     <link href="bootstrap.css" rel="stylesheet">
-    <link href="root.css" rel="stylesheet">
     <style type="text/css">
       /* Override some defaults */
       html, body {
@@ -107,10 +106,10 @@
           <a class="brand" href="#">Project name</a>
 
           <ul class="nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="how_it_works.html">How it Works</a></li>
             <li><a href="types_of_tests.html">Types of Tests</a></li>
-            <li><a href="faqs.html">FAQs</a></li>
+            <li class="active"><a href="faqs.html">FAQs</a></li>
           </ul>
 
         </div>
@@ -124,74 +123,44 @@
           <h1>Web Consistency Testing <small>Making the Web better for all</small></h1>
         </div>
         <div class="row">
-          <div class="span10">
+          <div class="span10">            
+            <h2>FAQs</h2>
+            
+            <h3>How is this different than functional testing?</h3>
+            <p>
+              Functional testing is a great practice and should be part of your Web testing repertoire.  The problem is functional testing only emulates
+              the mechanics of how a user interacts with a site: clicking buttons, typing text, etc.  There's certainly value in all this.  But well before
+              visitors start interacting with a page at that level, they view the page (alternatively, through a screenreader).  The Web is primarily a visual
+              medium and pages that look wrong get abandoned.
+            </p>
 
-            <h2>Introduction</h2>
             <p>
-              Web Consistency Testing is a new form of Web testing that aims to answer the simple question: does this page look right?
-              It's an automated approach to making sure a page looks the way we expect, whether that be cross-browser, over time (regression),
-              in multiple locales, or whatever else we can think of.  Kevin Menard, founder of <a href="http://mogotest.com/">Mogotest</a>, presented
-              an in-depth talk about what Web Consistency Testing is and presented a roadmap for building such a system at GTAC 2011.  You can see his
-              presentation below:
+              Web Consistency Testing is complementary to functional testing.  You can check that your form error handling works when a required value is missing,
+              but you can also check that the error messages look the way you expect.  You can verify a button click responds correctly, but also ensure the button
+              appears in the correct location on a page.
             </p>
             
-            <iframe width="560" height="315" src="http://www.youtube.com/embed/_6fV-6eMSUM" frameborder="0" allowfullscreen></iframe>
-            
-            <a href="/presentations/web_consistency_testing.pdf">Download</a> a copy of the slides.
-            
-            <hr />
-            
-            <h2>Motivation</h2>
+            <h3>Don't browsers mostly look the same now?</h3>
             <p>
-              We as an industry waste an insane amount of time trying to make sure our pages look the way we expect.  While there is always
-              going to be a certain level of skill required to convert a mockup into a styled page, once that's done we should be able to ship.
-              But the reality is we need to deal with cross-browser rendering differences, we need to make sure changes to shared stylesheets
-              and JavaScript files don't break other pages, we need to make sure that changing localized files doesn't break a layout, etc.
+              Yes &amp; no.  Through my course of work I've come across a lot of subtle differences between Chrome, Safari, and Firefox.  Obviously Internet Explorer
+              is an entirely different beast.  There's certainly been consolidation around the understanding of some of the more ambiguous portions of the Web specs,
+              but browsers are adopting various portions of the draft HTML 5 and CSS 3 specs and have accelerated their delivery schedules.  So, at any given time,
+              things could be much better or much worse for your site.
             </p>
-            
+
             <p>
-              Until now, or choices have been ship &amp; hope nothing breaks or compare every browser rendering and see if anything gets caught.
-              I.e., our choices have been somewhere between not testing and exhaustive manual testing, which is a gigantic waste of human talent.
-              Web Consistency Testing is all about automating how your users visually interact with your site.  It addresses a massive gap in
-              our Web testing process while putting emphasis back on the user.
+              There has also been rapid adoption of smart phone technology in the US in the past few years.  These new browsers present new challenges.  So, on the
+              whole the differences between browsers is narrowing in one regard, but widening in another.
             </p>
-            
-            <hr />
-            
-            <h2>Example</h2>
+
+            <h3>What if I'm only targeting one browser?</h3>
             <p>
-              The best way to get a feel for Web Consistency Testing is to see what it can do for you.  Below is an example taken from Mogotest.
-              Here we can see a page rendered in Firefox 6 and IE 9.  The page has a typical set of nav buttons and exhibits a common issue
-              when using floated elements.  Here we can see that the "Member" button floats to the next line on IE 9, messing up the design.
-              You can see this highlighted as a pink overlay on the two renderings.  In addition, the coordinates for the upper-left and lower-right
-              points is provided to give the developer more context about the problem.
-            </p>
-            
-            <p style="margin-top: 20px; margin-bottom: 20px;">
-              <img src="images/example_cross_browser_issue.png" alt="Example Cross-browser Issue" style="width: 700px;" />
-            </p>
-            
-            <p>
-              Not only was the issue detected, but a tenet of Web Consistency Testing is to have semantic meaning behind that issue.  At the bottom
-              of the screenshot we see the list of all detected issues (incidentally, just one issue in this case).  The issue includes the CSS
-              selector for the element that's problematic, a notion of what dimension it's off in (here, off by the left), and the magnitude of the
-              issue (here, 462px).
-            </p>
-            
-            <p>
-              As you can see, we've provided an immense amount of information for a developer to fix the problem.  We've narrowed the problem down
-              to the precise element in error, we've indicated what the scope of the problem is, and we've visualized it.  The best part is this
-              entire process is automated.  Not only was it automated, but it required no coding whatsoever from the tester because a Web Consistency
-              Testing system uses the reference page (here, Firefox 6) as the source set of rules for any comparisons.  The approach is completely
-              adaptable and evolves as your pages do.
-            </p>
-            
-            <hr />
-            
-            <h2>Discussion</h2>
-            <p>
-              Want to lend a hand in enhancing Web Consistency Testing?  Looking for help on building out an implementation?  Just interested in the concept?
-              <a href="http://groups.google.com/group/web-consistency-testing">Join the Google Group</a> to get started.
+              Web Consistency Testing isn't going to appeal to everyone.  If you have a great process in place to ensure your pages always look the way you expect,
+              there's no point in messing with that.  But the great thing about Web Consistency Testing is that it's based on comparing page representations.  Those
+              pages could come from two different browsers, but they could also come from the same browser over time.  So, even if you're targeting just one browser,
+              Web Consistency Testing can serve as a regression tool, allowing you to make changes to shared assets without fear of inadvertently breaking pages. Or
+              perhaps you want to test in the same browser but in different locales.  Or maybe you want to test devices with various bandwidth capabilities.  The
+              same approach works and can adapt to whatever comparisons you need.
             </p>
           </div>
 
