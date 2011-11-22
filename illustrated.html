@@ -109,8 +109,8 @@
           <ul class="nav">
             <li><a href="/">Home</a></li>
             <li><a href="how-it-works.html">How it Works</a></li>
-            <li><a href="illustrated.html">Illustrated</a></li>
-            <li class="active"><a href="types_of_tests.html">Types of Tests</a></li>
+            <li class="active"><a href="illustrated.html">Illustrated</a></li>
+            <li><a href="types_of_tests.html">Types of Tests</a></li>
             <li><a href="faqs.html">FAQs</a></li>
           </ul>
 
@@ -122,41 +122,50 @@
 
       <div class="content">
         <div class="page-header">
-          <h1>Classification of Tests</h1>
+          <h1>WCT Illustrated</h1>
         </div>
         <div class="row">
-          <div class="span10">
-            <h2>Cross-browser Compatibility</h2>
+          <div class="span10">        
+            <h2>A Case of Indifference</h2>
             <p>
-              The most common situation we come across is cross-browser compatibility differences.  We iterate ad nauseum in a single browser then
-              compare against others, hope the differences are minimal, and fix as appropriate.  Some of us can be selective about the browsers we
-              support, others of us must support a wide variety of browsers.  Whether the detected issues are major or minor is fairly
-              inconsequential &mdash; the fact we have to resort to manually comparing at all is just a waste of time.  Computers can do that for us
-              much more reliably, much faster, and ultimately much cheaper.
+              Web Consistency Testing isn't about finding 100% parity between two pages.  While it can be tuned to do that if you wish,
+              the point is to check if a page looks right at a given point in time in a particular browser.  We ignore differences in
+              a page if they don't adversely impact the experience for our customers.
             </p>
             
-            <h2>Regression</h2>
             <p>
-              Most of us have experienced the pain of adding a little padding to an element to fix one page only to discover that padding causes
-              elements to float oddly on other pages.  When you don't know what pages link to which files, as is often the case, you generally
-              lack confidence in any modification you make.  Web Consistency Testing works just as well testing pages over time.  So you can make
-              your change and then test to see if you broke any other pages.
-            </p>
-            
-            <h2>Internationalization</h2>
-            <p>
-              Most internationalized sites start off in the developers' native language and then templatized for each of the target locales.
-              Translations usually come from a third party and fed into the site almost like a CMS.  Ensuring a site looks correct in this type
-              of environment can be an absolute bore.  With Web Consistency Testing you can easily compare the structure of the page in the
-              native language and each translated locale.  Since it tests for structure and not content, the fact different language is used has
-              no immediate impact on the test results.  What will be tested is how that language impacts the structure and flow of the page.
+              Figure 1 illustrates an example of a series of rendering differences in a page between two different browsers.  Here the
+              page looks fine in both browsers.  I'm not sure which is really the correct one.  And a visitor to the site wouldn't even
+              know that the page looked different in another browser.  There's nothing to fix here and there's nothing to be gained by
+              spending time making these two renderings look identical.
             </p>
 
-            <h2>Mobile / Bandwidth</h2>
+            <p style="margin-top: 20px; margin-bottom: 20px;">
+              <img src="images/case_of_indifference.png" alt="A Case of Indifference" style="width: 550px;" />
+              <div class="figure">Fig. 1: A case where we don't care about the cross-browser rendering differences.</div>
+            </p>
+
+            <h2>A Big Difference</h2>
             <p>
-              Mobile devices come in a lot of different flavors, with varying processing processor power and bandwidth constraints.  Many of us
-              are unaware of how this impacts the user experience.  With Web Consistency Testing we can test a page at different intervals after
-              a page starts loading.  That way we can test just how different a page looks after 1 second, 3 seconds, 5 seconds, etc.
+              Just as Figure 1 presented an example of rendering differences we don't care about, Figure 2 shows that there are other
+              cases where elements wrap that we very much care about.  In this example a form wrapped onto the next line in one
+              browser.  This could heavily impact conversion numbers or results from a multivariate test.  It's jarring and makes
+              the design look odd.  Fortunately in this case the wrapped form didn't break anything else on the page.  But, a visitor
+              to this page in Firefox 6 would likely be able to tell the page looks wrong without ever opening it in another browser.
+            </p>
+            
+            <p style="margin-top: 20px; margin-bottom: 20px;">
+              <img src="images/big_difference.png" alt="A Case of Indifference" style="width: 550px;" />
+              <div class="figure">Fig. 2: A case where we very much care about the cross-browser rendering differences.</div>
+            </p>
+
+            <h2>Recap</h2>
+            <p>
+              Web Consistency Testing helps narrow down the work we have to do by highlighting only the issues that actually impact
+              visitors to our sites.  If we throw away the notion of pixel-perfect design, and allow ourselves to be comfortable with
+              pages looking good, if not the same, on various browsers and devices, we can adapt to changes in the Web much more
+              frequently.  And we can be freed of dealing with trivial work to focus on the issues that have a meaningful impact on our
+              sites and apps.
             </p>
           </div>
 
